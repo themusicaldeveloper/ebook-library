@@ -12,8 +12,23 @@
 </head>
 <body>
   <h1>📚 My eBook Library</h1>
-  <div class="book-list">
-    <div class="book"><a href="pdf-reader.html?file=books/sample.pdf" target="_blank">Read Sample PDF</a></div>
-  </div>
+  <div class="book-list" id="bookList"></div>
+
+  <script>
+    fetch('books.json')
+      .then(res => res.json())
+      .then(books => {
+        const list = document.getElementById("bookList");
+        books.forEach(book => {
+          const isPdf = book.file.toLowerCase().endsWith(".pdf");
+          const isEpub = book.file.toLowerCase().endsWith(".epub");
+          const reader = isPdf ? "pdf-reader.html" : isEpub ? "epub-reader.html" : "#";
+          const card = `<div class="book">
+              <a href="${reader}?file=${encodeURIComponent(book.file)}" target="_blank">${book.title}</a>
+            </div>`;
+          list.innerHTML += card;
+        });
+      });
+  </script>
 </body>
 </html>
