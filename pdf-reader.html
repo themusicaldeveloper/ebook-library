@@ -6,7 +6,8 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const file = urlParams.get('file');
-    document.getElementById("pdf").src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${file}`;
+    const encoded = encodeURIComponent(file);
+    document.getElementById("pdf").src = `pdfjs/web/viewer.html?file=../../books/${encoded}`;
   </script>
 </body>
 </html>
