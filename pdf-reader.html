@@ -6,8 +6,11 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const file = urlParams.get('file');
-    const encoded = encodeURIComponent(file);
-    document.getElementById("pdf").src = `pdfjs/web/viewer.html?file=../../books/${encoded}`;
+
+    // ✅ FIX: Use full GitHub Pages URL to your PDF file
+    const encoded = encodeURIComponent(`https://your-username.github.io/ebook-library/${file}`);
+
+    document.getElementById("pdf").src = `pdfjs/web/viewer.html?file=${encoded}`;
   </script>
 </body>
 </html>
