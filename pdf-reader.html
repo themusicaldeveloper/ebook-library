@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head><title>PDF Reader</title></head>
 <body style="margin:0">
@@ -6,8 +5,8 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const file = urlParams.get('file');
-    const encoded = encodeURIComponent("https://your-username.github.io/ebook-library/" + file);
-    document.getElementById("pdf").src = "pdfjs/web/viewer.html?file=" + encoded;
+    const encoded = encodeURIComponent(`https://themusicaldeveloper.github.io/ebook-library/${file}`);
+    document.getElementById("pdf").src = `pdfjs/web/viewer.html?file=${encoded}`;
   </script>
 </body>
 </html>
